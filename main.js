@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
-import { AllFilmes } from "./router/allFilmesRouter.js";
+import { filmRouter } from "./router/allFilmesRouter.js";
 import { User } from "./router/userRouter.js";
 import cors from "cors";
 const app = express();
@@ -12,7 +12,8 @@ const port = 5060;
 
 app.use(express.json());
 app.use(cors());
-app.use(`${baseUrl}/filmes`, allFilmesRouter);
+app.use(`${baseUrl}/film
+`, filmRouter);
 app.use(`${baseUrl}/user`, userRouter);
 
 const dbUrl = process.env.DB_URL;

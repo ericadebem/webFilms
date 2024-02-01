@@ -1,5 +1,5 @@
 import { User } from "../model/userModel.js";
-import { HandlerError } from "../util/handleError,js";
+import { HandleError } from "../util/handleError,js";
 
 // aqui colocar o
 // get

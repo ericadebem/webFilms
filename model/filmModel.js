@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const allFilmesSchema = new mongoose.Schema(
+export const filmSchema = new mongoose.Schema(
   {
     photo: {
       type: String,
@@ -30,7 +30,7 @@ export const allFilmesSchema = new mongoose.Schema(
         require: true,
       },
       genre: {
-        type: Array, String,
+        type: [String],
         require: true,
       },
       AgeClassification: {
@@ -49,4 +49,4 @@ export const allFilmesSchema = new mongoose.Schema(
   }
 );
 
-export const AllFilmes = mongoose.model("AllFilmes", allFilmesSchema);
+export const Film = mongoose.model("Film", filmSchema);
