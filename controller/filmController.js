@@ -1,5 +1,5 @@
 import { Film } from "../model/filmModel.js";
-import { HandleError } from "../util/handleError.js";
+import { handleError } from "../util/handleError.js";
 
 export const getFilm = async (req, res) => {
   try {
@@ -8,7 +8,7 @@ export const getFilm = async (req, res) => {
       ? res.status(201).json({ film })
       : res.status(404).json({ msg: "Filme not found" });
   } catch (e) {
-    HandleError(res, e);
+    handleError(res, e);
   }
 };
 
@@ -18,7 +18,7 @@ export const getAllFilmes = async (req, res) => {
     allFilmes;
     await res.status(201).json({ allFilmes });
   } catch (e) {
-    HandleError(res, e);
+    handleError(res, e);
   }
 };
 export const postFilm = async (req, res) => {
@@ -27,7 +27,7 @@ export const postFilm = async (req, res) => {
     console.log(req.body);
     res.status(201).json({ film });
   } catch (error) {
-    HandleError(res, e);
+    handleError(res, e);
   }
 };
 export const patchFilm = async (req, res) => {
@@ -39,7 +39,7 @@ export const patchFilm = async (req, res) => {
       ? res.status(201).json({ film })
       : res.status(404).json({ msg: `Film ${req.params.id} not found` });
   } catch (error) {
-    HandleError(res, e);
+    handleError(res, e);
   }
 };
 export const deleteFilm = async (req, res) => {
@@ -47,7 +47,7 @@ export const deleteFilm = async (req, res) => {
     const film = await Film.findByIdAndDelete(req.params.id);
     res.status(201).json({ film });
   } catch (error) {
-    HandleError(res, e);
+    handleError(res, e);
   }
 };
 export const deleteAllFilmes = async (req, res) => {
@@ -55,7 +55,7 @@ export const deleteAllFilmes = async (req, res) => {
     const filmes = await Film.deleteMany();
     res.status(201).json({ filmes });
   } catch (error) {
-    HandleError(res, e);
+    handleError(res, e);
   }
 };
 

@@ -11,7 +11,7 @@ export const userSchema = new mongoose.Schema(
       require: true,
     },
 
-    password: array,
+    password: Array,
   },
   {
     collection: "users",
