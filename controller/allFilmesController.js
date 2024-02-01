@@ -1,5 +1,5 @@
-import { AllFilmes } from "../model/allFilmesModel";
-import {HandlerError } from "../util/handleError"
+import { AllFilmes } from "../model/allFilmesModel.js";
+import {HandlerError } from "../util/handleError.js"
 
 
 // aqui colocar o 
