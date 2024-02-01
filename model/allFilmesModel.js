@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const userSchema = new mongoose.Schema(
+export const allFilmesSchema = new mongoose.Schema(
   {
     photo: {
       type: String,
