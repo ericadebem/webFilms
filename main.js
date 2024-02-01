@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 import { filmRouter } from "./router/allFilmesRouter.js";
-import { User } from "./router/userRouter.js";
+import { userRouter } from "./router/userRouter.js";
 import cors from "cors";
 const app = express();
 const baseUrl = "/web";
@@ -12,8 +12,11 @@ const port = 5060;
 
 app.use(express.json());
 app.use(cors());
-app.use(`${baseUrl}/film
-`, filmRouter);
+app.use(
+  `${baseUrl}/film
+`,
+  filmRouter
+);
 app.use(`${baseUrl}/user`, userRouter);
 
 const dbUrl = process.env.DB_URL;
