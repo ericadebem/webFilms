@@ -14,9 +14,8 @@ export const getUser = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const user = await AllUsers.find({});
-    user;
-    await res.status(201).json({ user });
+    const users = await User.find();
+    res.status(201).json({ users });
   } catch (e) {
     HandleError(res, e);
   }
@@ -37,7 +36,7 @@ export const patchUser = async (req, res) => {
     });
     user
       ? res.status(201).json({ user })
-      : res.status(404).json({ msg: "User not found" });
+      : res.status(404).json({ msg: `User ${req.params.id} not found` });
   } catch (error) {
     HandleError(res, e);
   }
@@ -46,6 +45,14 @@ export const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
     res.status(201).json({ user });
+  } catch (error) {
+    HandleError(res, e);
+  }
+};
+export const deleteAllUsers = async (req, res) => {
+  try {
+    const users = await User.deleteMany();
+    res.status(201).json(users);
   } catch (error) {
     HandleError(res, e);
   }

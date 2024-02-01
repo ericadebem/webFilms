@@ -37,7 +37,7 @@ export const patchFilm = async (req, res) => {
     });
     film
       ? res.status(201).json({ film })
-      : res.status(404).json({ msg: "Film not found" });
+      : res.status(404).json({ msg: `Film ${req.params.id} not found` });
   } catch (error) {
     HandleError(res, e);
   }
@@ -50,3 +50,12 @@ export const deleteFilm = async (req, res) => {
     HandleError(res, e);
   }
 };
+export const deleteAllFilmes = async (req, res) => {
+  try {
+    const filmes = await Film.deleteMany();
+    res.status(201).json({ filmes });
+  } catch (error) {
+    HandleError(res, e);
+  }
+};
+
