@@ -1,9 +1,52 @@
 import { User } from "../model/userModel.js";
 import { HandleError } from "../util/handleError,js";
 
-// aqui colocar o
-// get
-// get all
-// post
-// update
-// delete
+export const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    user
+      ? res.status(201).json({ user })
+      : res.status(404).json({ msg: "User not found" });
+  } catch (e) {
+    HandleError(res, e);
+  }
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const user = await AllUsers.find({});
+    user;
+    await res.status(201).json({ user });
+  } catch (e) {
+    HandleError(res, e);
+  }
+};
+export const postUser = async (req, res) => {
+  try {
+    const user = await User.create(req.body);
+    console.log(req.body);
+    res.status(201).json({ user });
+  } catch (error) {
+    HandleError(res, e);
+  }
+};
+export const patchUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    user
+      ? res.status(201).json({ user })
+      : res.status(404).json({ msg: "User not found" });
+  } catch (error) {
+    HandleError(res, e);
+  }
+};
+export const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    res.status(201).json({ user });
+  } catch (error) {
+    HandleError(res, e);
+  }
+};
